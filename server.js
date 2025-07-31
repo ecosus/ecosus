@@ -57,7 +57,6 @@ app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 // Serve public assets
 app.use("/public", express.static(path.join(__dirname, "public")));
 
-
 // Routes
 app.use("/api/auth", authRoutes);
 app.use("/api/blog", blogRoutes);

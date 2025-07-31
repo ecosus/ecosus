@@ -57,15 +57,6 @@ app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 // Serve public assets
 app.use("/public", express.static(path.join(__dirname, "public")));
 
-// Health check endpoint
-app.get("/api/health", (req, res) => {
-  res.status(200).json({
-    success: true,
-    message: "Server is running",
-    timestamp: new Date().toISOString(),
-    environment: process.env.NODE_ENV,
-  });
-});
 
 // Routes
 app.use("/api/auth", authRoutes);

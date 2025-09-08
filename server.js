@@ -83,6 +83,29 @@ app.use((err, req, res, next) => {
     });
   }
 
+  app.get("/api/health", async (req, res) => {
+  try {
+    // Check MongoDB connection state
+    const mongoStatus = mongoose.connection.readyState; 
+    // 0 = disconnected, 1 = connected, 2 = connecting, 3 = disconnecting
+    const dbStates = ["disconnected", "connected", "connecting", "disconnecting"];
+
+    res.status(200).json({
+      success: true,
+      status: "OK",
+      uptime: process.uptime(),
+      timestamp: new Date(),
+      database: dbStates[mongoStatus],
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      status: "ERROR",
+      message: error.message,
+    });
+  }
+});
+
   // Mongoose duplicate key error
   if (err.code === 11000) {
     const field = Object.keys(err.keyValue)[0];

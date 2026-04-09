@@ -4,7 +4,8 @@ const connectDB = async () => {
   try {
     const conn = await mongoose.connect(
       process.env.MONGODB_URI ||
-        "mongodb+srv://Eco:Aa12345@ecosus.zbf9vge.mongodb.net/ecosus?retryWrites=true&w=majority",
+        "mongodb+srv://Eco:iW3o15X0ChPN4YZ0@ecosus.zbf9vge.mongodb.net/?appName=ecosus",
+      
       {
         useNewUrlParser: true,
         useUnifiedTopology: true,
